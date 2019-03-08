@@ -9,7 +9,10 @@ def load_crime_data(source_directory):
     for filename in crime_files:
         crime_dataframe = pd.read_csv(source_directory + filename)
         all_crimes.append(crime_dataframe)
-    return pd.concat(all_crimes)
+    crimes = pd.concat(all_crimes)
+    crimes = crimes[pd.notnull(crimes['Longitude'])]
+    crimes = crimes[pd.notnull(crimes['Latitude'])]
+    return crimes
 
 
 def get_lat_lon(dataframe):
