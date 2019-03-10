@@ -1,4 +1,4 @@
-# import geodist
+from geodist import *
 import pandas as pd
 import os
 
@@ -12,11 +12,25 @@ def load_crime_data(source_directory):
     crimes = pd.concat(all_crimes)
     crimes = crimes[pd.notnull(crimes['Longitude'])]
     crimes = crimes[pd.notnull(crimes['Latitude'])]
+    # Resets indexes after concatenation so all indexes are unique
+    crimes.reset_index(drop=True, inplace=True)
     return crimes
 
 
-def get_lat_lon(dataframe):
-    return dataframe[['Longitude', 'Latitude']]
+def check_crime_radius(crime_data, postcode_lat_lon, radius):
+    in_range = []
+    for row in range(len(crime_data)):
+        kilometers = distance([crime_data.iat[row, 5], crime_data.iat[row, 4]],
+                              [50.71527036, -2.44427954])
+        if kilometers <= radius:
+            in_range.append(crime_data.loc[[row]])
+    if len(in_range) >= 2:
+        return pd.concat(in_range)
+    elif len(in_range) == 1:
+        return in_range[0]
 
 
-print(get_lat_lon(load_crime_data('Devon_and_Cornwall_crime_data_2018/')))
+sample_pc = [50.71527036, -2.44427954]
+
+crimes = load_crime_data('Devon_and_Cornwall_crime_data_2018/')
+print(check_crime_radius(crimes, sample_pc, 50))
