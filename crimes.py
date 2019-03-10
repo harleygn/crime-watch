@@ -21,7 +21,7 @@ def check_crime_radius(crime_data, postcode_lat_lon, radius):
     in_range = []
     for row in range(len(crime_data)):
         kilometers = distance([crime_data.iat[row, 5], crime_data.iat[row, 4]],
-                              [50.71527036, -2.44427954])
+                              postcode_lat_lon)
         if kilometers <= radius:
             in_range.append(crime_data.loc[[row]])
     if len(in_range) >= 2:
@@ -29,8 +29,3 @@ def check_crime_radius(crime_data, postcode_lat_lon, radius):
     elif len(in_range) == 1:
         return in_range[0]
 
-
-sample_pc = [50.71527036, -2.44427954]
-
-crimes = load_crime_data('Devon_and_Cornwall_crime_data_2018/')
-print(check_crime_radius(crimes, sample_pc, 50))

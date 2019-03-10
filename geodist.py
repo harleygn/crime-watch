@@ -23,7 +23,7 @@ def distance(latlngA, latlngB):
     latB, lngB = latlngB
     lngB = math.radians(lngB)
     latB = math.radians(latB)
-    x = ( lngB - lngA ) * math.cos( (latA + latB) / 2 )
+    x = (lngB - lngA) * math.cos((latA + latB) / 2)
     y = latB - latA
-    d = math.sqrt( x*x + y*y ) * R
+    d = math.sqrt(x * x + y * y) * R
     return d
