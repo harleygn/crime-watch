@@ -13,11 +13,12 @@ def load_crime_data(source_directory):
     """
     all_crimes = []
     # Lists all the files in the given directory
-    crime_files = os.listdir(source_directory)
-    # Builds a list containing the loaded CSVs
-    for filename in crime_files:
-        crime_dataframe = pd.read_csv(source_directory + filename)
-        all_crimes.append(crime_dataframe)
+    files = os.listdir(source_directory)
+    # Loads all the CSV files in the directory
+    for filename in files:
+        if os.path.splitext(filename)[1] == '.csv':
+            crime_dataframe = pd.read_csv(source_directory + filename)
+            all_crimes.append(crime_dataframe)
     # Joins the loaded data into a single dataframe
     crimes = pd.concat(all_crimes)
     # Removes rows with a Null lat/lon value as these are useless to us
