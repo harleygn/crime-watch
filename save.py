@@ -1,10 +1,10 @@
 from datetime import datetime
 
 
-def save_report(report, save_dir, name):
+def save_report(report, save_dir, name='report'):
     """
     Function to save a dataframe as a CSV file with a name based on current date
-    and time plus a name label
+    and time plus an optional name label
     :param report: Dataframe containing data to save
     :param save_dir: String containing filepath of directory in which to save
     :param name: String containing optional filename
