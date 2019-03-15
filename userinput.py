@@ -3,39 +3,30 @@ from tkinter import *
 
 
 master = Tk()
-master.geometry("500x500")
+master.geometry("250x500")
 e = Entry(master)
-e.place(x=215, y=225)
-e1 = Entry(master)
-e1.place(x=215, y=250)
+e.place(x=65, y=225)
 e.focus_set()
-e1.focus_set()
 
 def callback():
     print (e.get())
 
-b = Button(master, text="get", width=10, command=callback)
-b.place(x=235, y=275)
+b = Button(master, text="Start", width=10, command=callback)
+b.place(x=85, y=375)
+
+variable = StringVar(master)
+variable.set("Radius") # default value
+
+w = OptionMenu(master, variable, "1", "2", "5")
+w.place(x=85, y=275)
 
 mainloop()
 
 e = Entry(master, width=50)
-e1 = Entry(master, width=50)
-
 
 postcode_text = e.get()
 radius_text = e.get()
 
-def makeentry(parent, caption, width=None, **options):
-    Label(parent, text=caption).pack(side=LEFT)
-    entry = Entry(parent, **options)
-    if width:
-        entry.config(width=width)
-    entry.pack(side=LEFT)
-    return entry
-
-user = makeentry(parent, "User name:", 10)
-password = makeentry(parent, "Password:", 10, show="*")
 content = StringVar()
 entry = Entry(parent, text=caption, textvariable=content)
 
@@ -43,7 +34,6 @@ text = content.get()
 content.set(text)
 
 root = Tk()
-my_gui = GUI(root)
 root.mainloop()
 
 def setup():
