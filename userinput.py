@@ -24,5 +24,3 @@ def setup():
 
     return postcode, radius
 
-
-
