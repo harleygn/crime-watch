@@ -7,6 +7,7 @@ def setup():
     while valid == False:
         print("Enter a postcode...")
         postcode = input()
+        
         if re.search("^\w\w\w \w\w\w$", postcode) is not None:
             valid = True
         else:
@@ -22,5 +23,5 @@ def setup():
         else:
             print("Please enter a NUMBER between 1 and 5.")
 
-    return postcode, radius
+    return postcode.upper(), radius
 
