@@ -1,4 +1,5 @@
 import re
+from postcode import validate_postcode
 from tkinter import *
 
 def setup():
@@ -8,11 +9,11 @@ def setup():
         print("Enter a postcode...")
         postcode = input()
         
-        if re.search("^\w\w\w \w\w\w$", postcode) is not None:
+        if validate_postcode(postcode)[0]:
             valid = True
         else:
-            print("Please enter postcode in the correct format e.g. AB1 3CD.")
-
+            print("Invalid postcode.")
+            
     valid = False
 
     while valid == False:
