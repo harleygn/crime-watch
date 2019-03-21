@@ -51,6 +51,5 @@ files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.c
 		 'Devon_and_Cornwall_crime_data_2018/2018-11-devon-and-cornwall-street.csv',
 		 'Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv']
 
-all_csv = concatenate(files)
-
-print(get_lat_lon(all_csv, [-4.545507, 50.829508], 20))
+# all_csv = concatenate(files)
+# print(get_lat_lon(all_csv, [-4.545507, 50.829508], 20))
