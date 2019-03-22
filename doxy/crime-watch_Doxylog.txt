@@ -1,3 +1,0 @@
-warning: source C:\Users\Kalon is not a readable file or directory... skipping.
-warning: source Martin\Documents\GitHub\crime-watch\doxy\Source is not a readable file or directory... skipping.
-error: Problems running dot: exit code=-1, command='dot', arguments='"C:/Users/Kalon Martin/Documents/GitHub/crime-watch/doxy/crime-watch/html/graph_legend.dot" -Tpng -o "C:/Users/Kalon Martin/Documents/GitHub/crime-watch/doxy/crime-watch/html/graph_legend.png"'
