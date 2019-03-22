@@ -25,7 +25,7 @@ def concatenate(files):
 	return concatenated_files
 
 
-def get_lat_lon(crime_data, postcode_lat_lon, radius):
+def find_crimes(crime_data, postcode_lat_lon, radius):
 	in_range = []
 	for row in crime_data[1:]:
 		if row[4] or row[5]:
@@ -52,4 +52,4 @@ files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.c
 		 'Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv']
 
 # all_csv = concatenate(files)
-# print(get_lat_lon(all_csv, [-4.545507, 50.829508], 20))
+# print(find_crimes(all_csv, [-4.545507, 50.829508], 20))
