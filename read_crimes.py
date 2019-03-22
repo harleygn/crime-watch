@@ -2,6 +2,11 @@ from geodist import *
 
 
 def load_crimes(file_path):
+	"""
+
+	:param file_path:
+	:return:
+	"""
 	crime_csv = []
 	with open(file_path, 'r') as file:
 		for line in file:
@@ -12,13 +17,21 @@ def load_crimes(file_path):
 
 
 def concatenate(files):
+	"""
+
+	:param files:
+	:return:
+	"""
 	concatenated_files = []
-	all_crimes = []
-	all_crimes.append(load_crimes(files[0]))
+	# Loads the whole of the first file, including headers
+	all_crimes = [load_crimes(files[0])]
+	# Skips first file as already loaded
 	for file_path in files[1:]:
 		loaded = load_crimes(files[0])
+		# Removes header as this would be repeated otherwise
 		del loaded[0]
 		all_crimes.append(loaded)
+	# Adds all the rows from all the files into a single list
 	for file_rows in all_crimes:
 		for row in file_rows:
 			concatenated_files.append(row)
@@ -26,9 +39,18 @@ def concatenate(files):
 
 
 def get_lat_lon(crime_data, postcode_lat_lon, radius):
+	"""
+
+	:param crime_data:
+	:param postcode_lat_lon:
+	:param radius:
+	:return:
+	"""
 	in_range = []
 	for row in crime_data[1:]:
 		if row[4] or row[5]:
+			# Replaces dashes with correctly encoded dashes so the float
+			# function can detect minus values with breaking
 			lat = float(row[4].replace("−", "-"))
 			lon = float(row[5].replace("−", "-"))
 			kilometers = distance([lat, lon], postcode_lat_lon)
@@ -38,18 +60,19 @@ def get_lat_lon(crime_data, postcode_lat_lon, radius):
 	return in_range
 
 
-files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-02-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-03-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-04-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-05-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-06-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-07-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-08-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-09-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-10-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-11-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv']
+crime_csv_files = [
+	'Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-02-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-03-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-04-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-05-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-06-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-07-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-08-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-09-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-10-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-11-devon-and-cornwall-street.csv',
+	'Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv']
 
-# all_csv = concatenate(files)
+# all_csv = concatenate(crime_csv_files)
 # print(get_lat_lon(all_csv, [-4.545507, 50.829508], 20))
