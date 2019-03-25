@@ -5,7 +5,7 @@ Created on Tue Mar 19 08:30:11 2019
 @author: Kalon Martin , Matthew Penswick
 """
 
-file_path = "C:/Users/Kalon Martin/Documents/GitHub/crime-watch/postcodes.csv"
+file_path = "./postcodes.csv"
 
 def load_postcodes():
     '''
