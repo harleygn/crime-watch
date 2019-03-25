@@ -8,10 +8,7 @@ valid, index = pc.validate_postcode(postcode)
 
 if valid:
     lat_long = pc.get_lat_long(index)
-    crime_data = cr.load_crimes("./Documents/Devon_and_Cornwall_crime_data_2018")
-    result_data = cr.check_crime_radius(crime_data, lat_long, radius)
+    crime_data = cr.get_lat_lon(cr.all_csv, lat_long, int(radius))
     
-    print("Postcode: " + postcode + "\n" + "Latitude: " + lat_long[0] + "\n" + "Longitude: " + lat_long[1])
+    print("Searching for crime data within " + str(radius) + "km of " + postcode + "...")
     
-    print("Searching for crimes within " + str(radius) + "km of " + postcode + "...")
-

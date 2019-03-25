@@ -26,7 +26,7 @@ def load_postcodes():
         if i > 0:
             csv_list = csv[i]
             temp_list = []
-            temp_list.append(csv_list[0].strip('\"'))# Appends the first row inthe table (Postcode)
+            temp_list.append(csv_list[0].strip('\"'))# Appends the first row in the table (Postcode)
             temp_list.append(csv_list[10].strip('\"'))#Appends the 10th row in the table (Latitude)
             temp_list.append(csv_list[11].strip('\"'))#Appends the 11th row in the table (longitude)
             
@@ -68,7 +68,7 @@ def get_lat_long(index):
     '''
     lat = postcode_df[index][1]
     long = postcode_df[index][2]
-    lat_long = [lat, long]
+    lat_long = (float(lat), float(long))
     return lat_long
 
 postcode_df = load_postcodes()    

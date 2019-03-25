@@ -1,13 +1,14 @@
-import re
 from postcode import validate_postcode
 from tkinter import *
 
 def setup():
     valid = False
+    radius_inputs = [1,2,5]
 
     while valid == False:
         print("Enter a postcode...")
         postcode = input()
+        postcode = postcode.upper()
         
         if validate_postcode(postcode)[0]:
             valid = True
@@ -19,10 +20,10 @@ def setup():
     while valid == False:
         print("Enter a radius...")
         radius = input()
-        if int(radius) <= 5:
+        if int(radius) in radius_inputs:
             valid = True
         else:
-            print("Please enter a NUMBER between 1 and 5.")
+            print("Please enter a valid radius (1 , 2 , 5)")
 
-    return postcode.upper(), radius
+    return postcode, radius
 
