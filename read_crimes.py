@@ -1,6 +1,11 @@
 from geodist import *
 
 def load_crimes(file_path):
+	"""
+
+	:param file_path:
+	:return:
+	"""
 	crime_csv = []
 	with open(file_path, 'r') as file:
 		for line in file:
@@ -11,13 +16,21 @@ def load_crimes(file_path):
 
 
 def concatenate(files):
+	"""
+
+	:param files:
+	:return:
+	"""
 	concatenated_files = []
-	all_crimes = []
-	all_crimes.append(load_crimes(files[0]))
+	# Loads the whole of the first file, including headers
+	all_crimes = [load_crimes(files[0])]
+	# Skips first file as already loaded
 	for file_path in files[1:]:
 		loaded = load_crimes(files[0])
+		# Removes header as this would be repeated otherwise
 		del loaded[0]
 		all_crimes.append(loaded)
+	# Adds all the rows from all the files into a single list
 	for file_rows in all_crimes:
 		for row in file_rows:
 			concatenated_files.append(row)
@@ -61,4 +74,3 @@ files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.c
 
 
 all_csv = concatenate(files)
-
