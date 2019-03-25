@@ -7,6 +7,7 @@ Created on Tue Mar 19 08:30:11 2019
 
 file_path = "./postcodes.csv"
 
+
 def load_postcodes():
     '''
     This function reduces the size of the original CSV and gathers the information needed. This is postcode, Latitude, and Longitude.
@@ -14,25 +15,30 @@ def load_postcodes():
     '''
     csv = []
     return_list = []
-    
-    with open(file_path, 'r') as file:   # This reads the CSV, and names it 'file'.
+
+    with open(file_path,
+              'r') as file:  # This reads the CSV, and names it 'file'.
         for line in file:
-            line = line.strip()# Strips the white-space from the imported words.
-            line = line.split(',')# Strips the data into key elements needed.
+            line = line.strip()  # Strips the white-space from the imported words.
+            line = line.split(',')  # Strips the data into key elements needed.
             csv.append(line)
-    
-    for i in range(len(csv)):# Find the length of the CSV
-        #starts at above 0 to delete the column titles
+
+    for i in range(len(csv)):  # Find the length of the CSV
+        # starts at above 0 to delete the column titles
         if i > 0:
             csv_list = csv[i]
             temp_list = []
-            temp_list.append(csv_list[0].strip('\"'))# Appends the first row in the table (Postcode)
-            temp_list.append(csv_list[10].strip('\"'))#Appends the 10th row in the table (Latitude)
-            temp_list.append(csv_list[11].strip('\"'))#Appends the 11th row in the table (longitude)
-            
+            temp_list.append(csv_list[0].strip(
+                '\"'))  # Appends the first row in the table (Postcode)
+            temp_list.append(csv_list[10].strip(
+                '\"'))  # Appends the 10th row in the table (Latitude)
+            temp_list.append(csv_list[11].strip(
+                '\"'))  # Appends the 11th row in the table (longitude)
+
             return_list.append(temp_list)
-        
+
     return return_list
+
 
 def validate_postcode(postcode):
     '''
@@ -43,22 +49,24 @@ def validate_postcode(postcode):
     '''
     valid = False
     count = 0
-    
+
     while valid == False:
-        temp_list = postcode_df[count]# This counts the occurences of the substring
+        temp_list = postcode_df[
+            count]  # This counts the occurences of the substring
         if count < len(postcode_df) - 1:
-            
-            if postcode == temp_list[0]:               
+
+            if postcode == temp_list[0]:
                 valid = True
                 index = count
                 break
         else:
             index = 0
             break
-        
+
         count += 1
-    
+
     return valid, index
+
 
 def get_lat_long(index):
     '''
@@ -71,5 +79,5 @@ def get_lat_long(index):
     lat_long = (float(lat), float(long))
     return lat_long
 
-postcode_df = load_postcodes()    
-        
+
+postcode_df = load_postcodes()
