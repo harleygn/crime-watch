@@ -20,4 +20,4 @@ if valid:
     lat_long = pc.get_lat_long(index)
     crime_data = cr.get_lat_lon(cr.all_csv, lat_long, int(radius))
     
-    sr.save(re.create_report_data(crime_data), r'.')
+    sr.save(re.create_report_data(crime_data), r'./')
