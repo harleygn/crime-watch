@@ -27,3 +27,5 @@ def distance(latlngA, latlngB):
     y = latB - latA
     d = math.sqrt(x * x + y * y) * R
     return d
+
+#print(distance((50.71527036, -2.44427954), ())
