@@ -68,8 +68,8 @@ def get_lat_long(index):
     '''
     lat = postcode_df[index][1]
     long = postcode_df[index][2]
-    
-    return lat, long
+    lat_long = [lat, long]
+    return lat_long
 
 postcode_df = load_postcodes()    
         
