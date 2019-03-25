@@ -26,7 +26,11 @@ def concatenate(files):
 
 def get_lat_lon(crime_data, postcode_lat_lon, radius):
     in_range = []
+    count = 0
+    percentage = 0
     for row in crime_data[1:]:
+        count += 1
+        
         if row[4] or row[5]:           
             lon = float(row[4].replace("−", "-"))
             lat = float(row[5].replace("−", "-"))
@@ -34,6 +38,12 @@ def get_lat_lon(crime_data, postcode_lat_lon, radius):
             # If a crime is within the radius to entire row is saved
             if kilometers <= radius:
                 in_range.append(row)
+                
+        #percentage for user
+        if(round(((len(crime_data) - (len(crime_data) - count)) / len(crime_data)) * 100) > percentage):        
+            percentage += 25
+            print(str(percentage) + "%")
+            
     return in_range
 
 files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.csv',

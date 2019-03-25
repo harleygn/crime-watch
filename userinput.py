@@ -3,7 +3,7 @@ from tkinter import *
 
 def setup():
     valid = False
-    radius_inputs = [1,2,5]
+    radius_inputs = [1,2,50]
 
     while valid == False:
         print("Enter a postcode...")
@@ -13,7 +13,7 @@ def setup():
         if validate_postcode(postcode)[0]:
             valid = True
         else:
-            print("Invalid postcode.")
+            print("Invalid postcode. Please enter in a valid format e.g. AB1 2CD or EG11 2EG")
             
     valid = False
 
