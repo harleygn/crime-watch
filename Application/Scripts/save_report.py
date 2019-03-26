@@ -3,8 +3,7 @@ from datetime import datetime
 
 def save(data, save_dir, name='report'):
     # Builds a filename based on current date and time plus a name label
-    filename = '/' + str(datetime.now().strftime("%Y-%m-%d_%H:%M:%S")) + \
-               '/' + name + '.csv'
+    filename = '/' + str(datetime.now().strftime("%Y-%m-%d_%H:%M:%S")) + '_' + name + '.csv'
     # Joins the filename to the directory path to get a full filepath
     filepath = save_dir + filename
     joined_rows = []
