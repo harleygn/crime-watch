@@ -8,17 +8,19 @@ def setup():
     :return: radius - a string value containing a valid radius.
     '''
     valid = False
-    radius_inputs = [1, 2, 50]
+    radius_inputs = [1, 2, 5]
 
     while not valid:
         print("Enter a postcode...")
         postcode = input()
         postcode = postcode.upper()
-
-        if validate_postcode(postcode)[0]:
-            valid = True
+        if "EX" in postcode:
+            if validate_postcode(postcode)[0]:
+                valid = True
+            else:
+                print("Invalid postcode. Please enter in a valid format e.g. AB1 2CD or EG112EG")
         else:
-            print("Invalid postcode. Please enter in a valid format e.g. AB1 2CD or EG11 2EG")
+            print("Invalid postcode. Please enter a postcode beginning with EX")
 
     valid = False
 
