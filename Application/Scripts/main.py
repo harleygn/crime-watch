@@ -25,5 +25,5 @@ if valid:
     crime_data = cr.get_lat_lon(cr.all_csv, lat_long, int(radius))
 
     #save the report from the crime data list.
-    sr.save(re.create_report_data(crime_data), '../Reports', postcode, radius)
+    sr.save(re.create_report_data(crime_data), os.path.dirname(os.getcwd()) + '/reports/', postcode, radius)
 
