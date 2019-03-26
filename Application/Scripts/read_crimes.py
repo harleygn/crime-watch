@@ -1,4 +1,6 @@
 from geodist import *
+import os
+dirname = os.path.dirname(__file__)
 
 def load_crimes(file_path):
 	"""
@@ -59,18 +61,18 @@ def get_lat_lon(crime_data, postcode_lat_lon, radius):
             
     return in_range
 
-files = ['Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-02-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-03-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-04-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-05-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-06-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-07-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-08-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-09-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-10-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-11-devon-and-cornwall-street.csv',
-		 'Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv']
+files = [os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-01-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-02-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-03-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-04-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-05-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-06-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-07-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-08-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-09-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-10-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-11-devon-and-cornwall-street.csv'),
+		 os.path.join(dirname, './Devon_and_Cornwall_crime_data_2018/2018-12-devon-and-cornwall-street.csv'),]
 
 
 all_csv = concatenate(files)

@@ -1,6 +1,6 @@
 def save(data, save_dir, name='report'):
     # Builds a filename based on current date and time plus a name label
-    filename = name + '.csv'
+    filename = '/' + name + '.csv'
     # Joins the filename to the directory path to get a full filepath
     filepath = save_dir + filename
     joined_rows = []

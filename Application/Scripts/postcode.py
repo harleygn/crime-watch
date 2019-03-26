@@ -5,7 +5,9 @@ Created on Tue Mar 19 08:30:11 2019
 @author: Kalon Martin , Matthew Penswick
 """
 
-file_path = "./postcodes.csv"
+import os
+dirname = os.path.dirname(__file__)
+file_path = os.path.join(dirname, './postcodes.csv')
 
 
 def load_postcodes():
