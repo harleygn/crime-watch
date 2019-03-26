@@ -1,7 +1,12 @@
 from postcode import validate_postcode
 
-
 def setup():
+    '''
+    A function that allows for the initial set up of the program. It asks the user for a "POSTCODE" and a "RADIUS".
+    It then validates both the postcode and the radius before the program moves on.
+    :return: postcode - a string value containing a valid postcode.
+    :return: radius - a string value containing a valid radius.
+    '''
     valid = False
     radius_inputs = [1, 2, 50]
 
