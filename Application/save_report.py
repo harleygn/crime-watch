@@ -1,10 +1,10 @@
 def save(data, save_dir, name='report'):
     """
-
-    :param data:
-    :param save_dir:
-    :param name:
-    :return:
+    Saves an array of data as a CSV
+    :param data: an array of data
+    :param save_dir: the location in which the save the CSV
+    :param name: an optional label to add to the file, defaults to 'report'
+    :return: None
     """
     # Builds a filename
     filename = name + '.csv'
