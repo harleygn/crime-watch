@@ -31,11 +31,11 @@ def load_postcodes():
             csv_list = csv[i]
             temp_list = []
             temp_list.append(csv_list[0].strip(
-                '\"'))  # Appends the first row in the table (Postcode)
+                '\"'))  # Appends the first column in the table (Postcode)
             temp_list.append(csv_list[10].strip(
-                '\"'))  # Appends the 10th row in the table (Latitude)
+                '\"'))  # Appends the 10th column in the table (Latitude)
             temp_list.append(csv_list[11].strip(
-                '\"'))  # Appends the 11th row in the table (longitude)
+                '\"'))  # Appends the 11th column in the table (longitude)
 
             return_list.append(temp_list)
 
@@ -54,7 +54,7 @@ def validate_postcode(postcode):
 
     while valid == False:
         temp_list = postcode_df[
-            count]  # This counts the occurences of the substring
+            count]  # This counts the occurrences of the substring
         if count < len(postcode_df) - 1:
 
             if postcode == temp_list[0]:
